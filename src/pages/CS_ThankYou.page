@@ -1,0 +1,8 @@
+<!--
+ - Created by Mateusz on 28.12.2017.
+ -->
+
+<apex:page id="CS_ThankYou" showHeader="false" sideBar="false" standardStylesheets="false" applyHtmlTag="true"
+           applyBodyTag="false" docType="html-5.0">
+    <apex:image id="theImage" value="https://vignette.wikia.nocookie.net/seekers-notes/images/3/3b/Thank-You-Free-PNG-Image.png/revision/latest?cb=20170905203909" alt="thanks" />
+</apex:page>
