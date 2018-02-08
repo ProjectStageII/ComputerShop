@@ -20,6 +20,9 @@
     </head>
     <script src="https://www.google.com/recaptcha/api.js"></script>
     <script>
+
+        $j = jQuery.noConflict();
+
         function timestamp() {
             var response = document.getElementById("g-recaptcha-response");
             if (response == null || response.value.trim() == "") {
@@ -29,6 +32,8 @@
                 }
         }
         setInterval(timestamp, 500);
+
+
     </script>
     <style>
         #formTable {
@@ -104,19 +109,21 @@
                                     <td><label for="state">State: </label></td>
                                     <td><input id="state" maxlength="20" name="state" size="20" type="text"/></td>
                                 </tr>
+
                             </tbody>
                         </table>
+                        <input type="hidden" id="lead_source" name="lead_source" value="Web" />
                         <div class="g-recaptcha" data-sitekey="6Le_bD4UAAAAAKWVuEiyBeN9AvDVJi7wZt_uL26M"></div>
                         <br />
-                        <input type="submit" name="submit" />
+                        <input type="submit" name="submit" class="slds-button slds-button--brand" value="Send"/>
                     </form>
                 </div>
             </div>
         </div>
 
         <div id="liveChatDiv">
-            <img id="liveagent_button_online_5730N000000PN73" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('5730N000000PN73')" src="https://cswebtolead-developer-edition.eu8.force.com/WebToLead/resource/1514456101000/needhelp" />
-            <img id="liveagent_button_offline_5730N000000PN73" style="display: none; border: 0px none; " src="https://cswebtolead-developer-edition.eu8.force.com/WebToLead/resource/1514456121000/offline" />
+            <img id="liveagent_button_online_5730N000000PN73" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('5730N000000PN73')" src="https://cswebtolead-developer-edition.eu8.force.com/welcome/resource/1514456101000/needhelp" />
+            <img id="liveagent_button_offline_5730N000000PN73" style="display: none; border: 0px none; " src="https://cswebtolead-developer-edition.eu8.force.com/welcome/resource/1514456121000/offline" />
             <script type="text/javascript">
                 if (!window._laq) {
                     window._laq = [];

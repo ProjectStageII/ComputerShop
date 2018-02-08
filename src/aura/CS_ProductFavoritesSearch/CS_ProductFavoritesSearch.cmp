@@ -1,0 +1,27 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="CS_ProductSearchController">
+    <!--### declared attributes ###-->
+    <aura:attribute name="searchName" type="String" description="use for store user search input"/>
+    <aura:attribute name="Message" type="boolean" default="false" description="use for display no record found message"/>
+
+    <aura:registerEvent name="updateProducts" type="c:CS_ProductFavoritesSearchEvent"/>
+
+    <div class="slds-m-around--large slds-container--center slds-box slds-theme_default">
+        <div class="slds-text-heading_medium">Search</div>
+        <form class="slds-form--stacked">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="search"></label>
+                <div class="slds-form-element__control">
+                    <label for="searchName">Product Name:</label>
+                    <ui:inputText aura:id="searchName" class="slds-input" value="{!v.searchName}"/>
+                </div>
+            </div>
+            <aura:if isTrue="{!v.Message}">
+                <div class="slds-text-color--error slds-m-top--medium" aura:id="noRecords">No Result Found...</div>
+            </aura:if>
+            <div class="slds-form-element slds-m-top--medium slds-align_absolute-center">
+                <button type="button" aura:id="searchButton" name="searchButton" onclick="{!c.Search}" class="slds-button slds-button--brand">Search</button>
+                <button type="button" aura:id="clearButton" name="clearButton" onclick="{!c.clear}" class="slds-button slds-button--destructive">Clear</button>
+            </div>
+        </form>
+    </div>
+</aura:component>

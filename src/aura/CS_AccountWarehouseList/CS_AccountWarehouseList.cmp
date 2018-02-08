@@ -1,0 +1,73 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="CS_AccountWarehouseSearchController">
+    <!--### declared attributes ###-->
+    <aura:attribute name="messageFromEvent" type="String"/>
+    <aura:attribute name="numEvents" type="Integer" default="0"/>
+    <aura:attribute name="searchResult" type="List" description="use for store and display account list return from server"/>
+    <aura:attribute name="Message" type="boolean" default="false" description="use for display no record found message"/>
+    <aura:attribute name="numberOfRecord" type="integer" default="0" description="use for display Number of records"/>
+
+    <aura:registerEvent name="singleWarehouse" type="c:CS_AccountWarehouseListMapEvent"/>
+    <aura:registerEvent name="updateWarehouses" type="c:CS_AccountWarehouseSearchListEvent"/>
+
+    <aura:handler event="c:CS_AccountWarehouseSearchListEvent" action="{!c.handleApplicationEvent}"/>
+    <div class="slds-m-around--large slds-box slds-theme_default invisible" aura:id="resultTable" name="resultTable">
+        <div class="slds-m-bottom--large slds-p-bottom--medium">
+            <span class="slds-text-heading_medium slds-float--left">Result list</span>
+            <lightning:button class="slds-button slds-button--brand slds-float_right" value="Close" label="Close" onclick="{!c.closeList}"/>
+        </div>
+        <div class="slds-m-top--large">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer slds-m-top--large" >
+                <thead>
+                <tr class="slds-text-title--caps">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Id">Id</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Account Name">Account Name</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Type">Address</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Industry">City</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Phone">Phone</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Fax">Country</div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <aura:if isTrue="{!v.Message}">
+                    <div class="slds-text-color--error"> No Result Found...</div>
+                </aura:if>
+                <!--### display all records of searchResult attribute by aura:iteration ###-->
+                <aura:iteration items="{!v.searchResult}" var="acc">
+                    <tr name="warehouseRow" onclick="{!c.fireListEvent}" id="{!acc.Id}" aura:id="warehouseRow">
+                        <td>
+                            <div class="slds-truncate">{!acc.Id}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate">{!acc.Name}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate">{!acc.BillingAddress.street}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate">{!acc.BillingAddress.city}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate">{!acc.Phone}</div>
+                        </td>
+                        <td>
+                            <div class="slds-truncate">{!acc.BillingAddress.country}</div>
+                        </td>
+                    </tr>
+                </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,7 @@
+<!--
+ - Created by Mateusz on 07.02.2018.
+ -->
+
+<aura:event type="APPLICATION" description="CS_ProductFavoritesSearchEvent">
+    <aura:attribute name="searchFavoriteProductEvent" type="FavoriteProduct__c[]"/>
+</aura:event>

@@ -1,0 +1,26 @@
+<!--
+ - Created by Mateusz on 07.02.2018.
+ -->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" description="CS_ProductDetailsHeader" controller="CS_ProductSearchController">
+
+    <aura:attribute name="prod" type="Product2"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="slds-box slds-theme_default slds-grid_align-spread">
+        <div class="slds-page-header">
+            <div class="slds-media">
+                <span class="slds-icon_container slds-icon-custom-custom5" title="Description of icon when needed">
+                  <!--<svg class="slds-icon" aria-hidden="true">-->
+                    <!--<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/custom-sprite/svg/symbols.svg#custom5" />-->
+                  <!--</svg>-->
+                  <span class="slds-assistive-text">Description of icon when needed</span>
+                </span>
+                <div class="slds-media__body">
+                    <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Rohde Corp - 80,000 Widgets">{!v.prod.Name}</h1>
+                    <p class="slds-text-body_small slds-line-height_reset">Mark Jaeckal • Unlimited Customer • 11/13/15</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

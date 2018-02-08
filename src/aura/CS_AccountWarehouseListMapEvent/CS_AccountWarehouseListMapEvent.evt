@@ -1,0 +1,7 @@
+<!--
+ - Created by Mateusz on 26.01.2018.
+ -->
+
+<aura:event type="APPLICATION" description="CS_AccountWarehouseListMapEvent">
+    <aura:attribute name="searchSingle" type="Account[]"/>
+</aura:event>

@@ -1,0 +1,7 @@
+<!--
+ - Created by Mateusz on 05.02.2018.
+ -->
+
+<aura:event type="APPLICATION" description="CS_ProductAddToCart">
+    <aura:attribute name="productToAdd" type="Product2"/>
+</aura:event>

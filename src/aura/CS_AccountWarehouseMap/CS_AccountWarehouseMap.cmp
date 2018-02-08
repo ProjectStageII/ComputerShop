@@ -1,0 +1,23 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="CS_AccountWarehouseMapController">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="availvals" type="String[]" />
+    <aura:attribute name="searchResult" type="List" description="use for store and display account list return from server"/>
+
+    <aura:handler event="c:CS_AccountWarehouseSearchListEvent" action="{!c.handleApplicationEvent}"/>
+    <aura:handler event="c:CS_AccountWarehouseListMapEvent" action="{!c.handleApplicationEventSingle}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div class="slds-m-around--large slds-box slds-theme_default">
+    <div class="slds-text-heading_medium">Map</div>
+    <!--<ui:inputSelect aura:id="getsel" class="slds-input" change="{!c.onSingleSelectChange}">-->
+        <!--<aura:iteration items="{!v.availvals}" var="val">-->
+            <!--<ui:inputSelectOption text="{!val}" />-->
+        <!--</aura:iteration>-->
+    <!--</ui:inputSelect>-->
+    <ltng:require styles="/resource/leaflet/leaflet.css" />
+    <ltng:require scripts="/resource/leaflet/leaflet.js" />
+    <div aura:id="mapnew" id="mapnew" style="height: 300px">
+        <div align="center">
+        </div>
+    </div>
+    </div>
+</aura:component>

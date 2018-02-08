@@ -1,0 +1,39 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="CS_ProductSearchController">
+    <!--### declared attributes ###-->
+    <aura:attribute name="searchResult" type="CS_ProductSearchController.ProductWrapper[]" description="use for store and display account list return from server"/>
+    <aura:registerEvent name="addToCart" type="c:CS_ProductAddToCart"/>
+
+    <aura:handler event="c:CS_ProductSearchEvent" action="{!c.handleApplicationEvent}"/>
+    <div class="slds-m-around--large slds-theme_default slds-grid_align-spread invisible" aura:id="resultTable">
+        <div class="slds-m-bottom--large slds-p-bottom--medium">
+            <span class="slds-text-heading_medium slds-float--left">Result list</span>
+        </div>
+        <aura:iteration items="{!v.searchResult}" var="pd">
+            <div aura:id="productDiv" id="{!pd.prod.Id}" class="resultSquare slds-float--left slds-align-content-center slds-m-around--small slds-align-middle slds-box">
+                <div class="slds-container--center slds-align--absolute-center">
+                    <a href="" id="{!pd.prod.Id}" onclick="{!c.redirectToDetails}">{!pd.prod.Name}</a>
+                </div>
+                <div class="productImage slds-align--absolute-center" aura:id="imageDiv" id="{!pd.prod.Id}">
+                    <img src="{!pd.photo}" />
+                </div>
+                <div class="slds-text-align--right slds-m-bottom--xxx-small">
+                    <lightning:formattedNumber value="{!pd.price}" style="currency" class="slds-text-heading_small" currencyCode="EUR" minimumFractionDigits="2"/>
+                </div>
+                <div class="slds-align-content-center">
+                    <lightning:buttonIcon iconName="utility:add" alternativeText="Add" onclick="{!c.addToFavs}" value="{!pd.prod.Id}"/>
+                    <aura:if isTrue="{!pd.isFav}">
+                        <lightning:buttonIcon iconName="utility:dislike" alternativeText="UnFav" onclick="{!c.remFromFavs}" value="{!pd.prod.Id}"/>
+                        <aura:set attribute="else">
+                            <lightning:buttonIcon iconName="utility:like" alternativeText="Fav" onclick="{!c.addToFavs}" value="{!pd.prod.Id}"/>
+                        </aura:set>
+                    </aura:if>
+                    <p class="slds-float_right">
+                        <aura:iteration items="{!pd.stars}" var="star">
+                            <span class="{!star}">☆</span>
+                        </aura:iteration>
+                    </p>
+                </div>
+            </div>
+        </aura:iteration>
+    </div>
+</aura:component>

@@ -1,0 +1,12 @@
+/**
+ * Created by Mateusz on 26.01.2018.
+ */
+ .THIS {
+     background:white;
+ }
+.THIS .invisible{
+    display: none;
+}
+.THIS .highlighted{
+    background: #d3f7ff;
+}
